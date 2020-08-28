@@ -285,10 +285,10 @@ section.features .feature-item i {
 
 section.cta {
   position: relative;
-  padding: 250px 0;
-  background-image: url("../img/bg-cta.jpg");
+  padding: 10px 0;
   background-position: center;
   background-size: cover;
+  border: 1px ;
 }
 
 section.cta .cta-content {
@@ -300,7 +300,7 @@ section.cta .cta-content h2 {
   font-size: 50px;
   max-width: 450px;
   margin-top: 0;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
   color: white;
 }
 
