@@ -19,22 +19,34 @@
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/vertical-timeline.css">
 
   <!-- Custom styles for this template -->
   <link href="css/new-age.min.css" rel="stylesheet">
+   <link href="css/new-age.css" rel="stylesheet">
 
 </head>
 
 <style>
 a:link {
-  color: blue; 
+  color: green; 
   background-color: transparent; 
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
   color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
   background-color: transparent;
   text-decoration: underline;
 }
@@ -54,10 +66,10 @@ a:hover {
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#blog">Blogs</a>
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
@@ -81,12 +93,9 @@ a:hover {
           </div>
         </div>
         <div class="col-lg-5 my-auto">
-          <div class="device-container">
-            <!-- <div class="device-mockup iphone6_plus portrait white"> -->
-             <!--  <div class="device">
-                <div class="screen"> -->
-                  <img src="img/profile.jpeg" alt="Profile" width="300" height="300">
-               </div>
+        
+                  <img src="img/profile.jpg" alt="Profile" width="400" height="500">
+              
               </div> 
             </div>
           </div>
@@ -95,7 +104,7 @@ a:hover {
     </div>
   </header>
 
-  <section class="download bg-primary text-center" id="blog">
+  <section class="download bg-primary text-center" id="projects">
     <div class="container">
       <div class="row">
         <div class="col-md-8 mx-auto">
@@ -109,33 +118,69 @@ a:hover {
   <section class="features" id="about">
     <div class="container">
       <div class="section-heading text-center">
-        <h2>A simple girl, A dreamer</h2>
-        <p class="text-muted">I write code to find answers to the Life, the Universe and Everything!</p>
-        <hr>
+        <h5>Hey, I am currently pursuing M.Tech in Computer Science at Indian Institute of Technology, Kanpur. I have spent my glorious undergraduate days at Indian Institute of Information Technology, Kalyani.</h5>
+        <p class="text-muted">When I am not around my course books, you will find me talking to the characters of Agatha Christie's or Sir Arthur Conan Doyle's novels. Occassionally, I write code to find answers to the Life, the Universe and Everything!</p>
       </div>
+  </div>
   </section>
 
   <section class="cta", id="experience">
-    <div class="cta-content">
-      <div class="container">
-        <h2>Experience</h2>
-        <h4><li>MAQ Software (Software Intern)</li></h4>
-        <p> May 2019 – July 2019 </p>
-        <h4><li><a href="IITM.html">IIT Madras Interview - 2020</a></li></h4>
-        <h4><li><a href="IITD.html">IIT Delhi Coding - 2020</a></li></h4>
-    </div>
-</div>
+   <section id="resume" class="resume">
+      <div class="container " data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1 class="resume-title">Education</h1>
+            <div class="resume-item">
+                <h4>Master of Technology</h4>
+                <h5>2020 - Present</h5>
+                <p>Indian Institute of Technology, Kanpur <br> CPI: </p>
+              </div>
+              <div class="resume-item">
+                <h4>Bachelor of Technology</h4>
+                <h5>2016 - 2020</h5>
+                <p>Indian Institute of Information Technology, Kalyani <br> CGPA: 9.15</p>
+                
+              </div>
+              <div class="resume-item">
+                  <h4>Intermediate</h4>
+                  <h5>2014 - 2016</h5>
+                  <p>Vidya Mandir Public School, Faridabad <br> Percentage: 94% (CBSE)</p>
+              </div> 
+              <div class="resume-item">
+                  <h4>High School</h4>
+                  <h5>2012 - 2014</h5>
+                  <p>St. Francis' Convent Inter College, Jhansi <br> Percentage: 94.6% (ICSE)</p>
+              </div>
+          </div>
+          
+          <div class="col-lg-6">
+            <h3 class="resume-title">Experience</h3>
+            <div class="resume-item">
+              <h4>Teaching Assistant</h4>
+          	</div>
+           <div class="resume-item">
+            <h4>MAQ Software </h4>
+            <h5>May 2019 - July 2019 </h5>
+        	<p> Software Intern </p> 
+            </div>
+
+           <div class="resume-item"> <h4><a href="IITM.html">IIT Madras Interview - 2020</a></h4></div>
+           <div class="resume-item"> <h4><a href="IITD.html">IIT Delhi Coding - 2020</a></h4></div>
+            
+            <h3 class="resume-title">Achievements</h3>
+            <div class="resume-item">Secured AIR 349 in GATE 2020</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="overlay"></div>
+    </section><!-- End Resume Section -->
   </section>
 
   <section class="contact bg-primary" id="contact">
     <div class="container">
-      <h2>Let's
-        <i class="fas fa-heart"></i>
-        connect!</h2>
-         <h4><a id="link" href="mailto:shruti.ss48@gmail.com?subject=Inquiry from Portfolio">Email</a></h4>
+      <h2>Let's <i class="fas fa-heart"></i>connect!</h2>
+         <h6><a id="link" href="mailto:shruti.ss48@gmail.com?subject=Inquiry from Portfolio">shruti.ss48@gmail.com</a></h6>
+
+         <h6><a id="link" href="mailto:shruti20@iitk.ac.in?subject=Inquiry from Portfolio">shruti20@iitk.ac.in</a></h6>
       <ul class="list-inline list-social">
         <li class="list-inline-item social-twitter">
           <a href="https://twitter.com/ChidiyaChirps">
@@ -154,7 +199,7 @@ a:hover {
         </li>
          <li class="list-inline-item social-linkedin">
             <a href="https://www.linkedin.com/in/shruti-sharma-a193959b/">
-              <i class="fab fa-linkedin-in"></i>
+              <i class="fab fa-linkedin"></i>
             </a>
         </li>
       </ul>
@@ -187,7 +232,6 @@ a:hover {
 
   <!-- Custom scripts for this template -->
   <script src="js/new-age.min.js"></script>
-  <script src="js/vertical-timeline.js"></script>
 
 </body>
 

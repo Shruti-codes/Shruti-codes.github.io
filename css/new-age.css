@@ -247,21 +247,6 @@ section.features .section-heading p {
   margin-bottom: 0;
 }
 
-section.features .device-container,
-section.features .feature-item {
-  max-width: 325px;
-  margin: 0 auto;
-}
-
-section.features .device-container {
-  margin-bottom: 100px;
-}
-
-@media (min-width: 992px) {
-  section.features .device-container {
-    margin-bottom: 0;
-  }
-}
 
 section.features .feature-item {
   padding-top: 50px;
@@ -286,6 +271,7 @@ section.features .feature-item i {
 section.cta {
   position: relative;
   padding: 10px 0;
+  background-color: beige;
   background-position: center;
   background-size: cover;
   border: 1px ;
@@ -293,6 +279,7 @@ section.cta {
 
 section.cta .cta-content {
   position: relative;
+  background-color: powderblue;
   z-index: 1;
 }
 
@@ -316,34 +303,17 @@ section.cta .overlay {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
 }
 
-section.contact {
-  text-align: center;
-  color:white;
-}
 
-section.contact h2 {
-  margin-top: 0;
-  margin-bottom: 25px;
-}
-
-section.contact h2 i {
-  color: #dd4b39;
-}
-
-section.contact ul.list-social {
-  margin-bottom: 0;
-}
 
 section.contact ul.list-social li a {
   font-size: 40px;
   line-height: 80px;
-  display: block;
   width: 80px;
   height: 80px;
-  color: white;
+  color: black;
   border-radius: 100%;
 }
 
@@ -371,12 +341,12 @@ section.contact ul.list-social li.social-github a:hover {
   background-color: #d73925;
 }
 
-section.contact ul.list-social li.social-linkedin-in a {
+section.contact ul.list-social li.social-linkedin a {
   background-color: #1da1f2;
 }
 
-section.contact ul.list-social li.social-linkedin-in a:hover {
-  background-color: #d73925;
+section.contact ul.list-social li.social-linkedin a:hover {
+  background-color:#3b5998;
 }
 
 footer {
@@ -408,6 +378,11 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
   background: #fdcc52;
   background: linear-gradient(#fdcc52, #fdc539);
 }
+
+.bg-secondary {
+  background: #F0F8FF;
+  background: linear-gradient( AliceBlue, Azure);
+ }
 
 .text-primary {
   color: white;
@@ -442,4 +417,54 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
   padding: 15px 45px;
 }
 
+.resume .resume-title {
+  font-size: 40px;
+  max-width: 450px;
+  margin-top: 0;
+  margin-bottom: 0px;
+  padding: 0 0 20px 20px;
+}
 
+.resume .resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid #0563bb;
+  position: relative;
+}
+
+.resume .resume-item h4 {
+  font-size: 18px;
+  font-weight: 550;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+
+.resume .resume-item h5 {
+  font-size: 16px;
+  display: inline-block;
+  font-weight: 400;
+}
+
+.resume .resume-item ul {
+  padding-left: 20px;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+}
+
+.resume .resume-item:last-child {
+  padding-bottom: 0;
+}
+
+.resume .resume-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: #fff;
+  border: 2px solid #0563bb;
+}
