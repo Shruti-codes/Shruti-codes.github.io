@@ -435,7 +435,6 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .resume .resume-item h4 {
   font-size: 18px;
   font-weight: 550;
-  text-transform: uppercase;
   font-family: "Poppins", sans-serif;
 }
 
@@ -460,11 +459,11 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .resume .resume-item::before {
   content: "";
   position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50px;
+  width: 14px;
+  height: 14px;
+  border-radius: 30px;
   left: -9px;
   top: 0;
-  background: #fff;
-  border: 2px solid #0563bb;
+  background: grey ;
+  border: 2px dotted black ;
 }
