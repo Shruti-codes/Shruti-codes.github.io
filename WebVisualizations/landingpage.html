@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Rainfall Visulaization</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Rainfall Visualization</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -14,12 +15,39 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
+<style>
+a:link {
+  color: green; 
+  background-color: transparent; 
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+</style>
+
 <body>
   <!-- start of header -->
   <div>
     <div class="row">
       <div class="col col-6 homebtn">
-        <a href="landingpage.html">Home</a>
+        <a href="https://shruti-codes.github.io/WebVisualizations/landingpage.html">Home</a>
       </div>
       <div class="col col-6 menubuttons divtop">
 
@@ -38,17 +66,17 @@
                   Plots
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="visualization-1.html">Max Temperature</a>
-                  <a class="dropdown-item" href="visualization-2.html">Humidity</a>
-                  <a class="dropdown-item" href="visualization-3.html">Cloudiness</a>
-                  <a class="dropdown-item" href="visualization-4.html">Wind Speed</a>
+                  <a class="dropdown-item" href="visualization-1.html">Kolkata</a>
+                  <a class="dropdown-item" href="visualization-2.html">Mumbai</a>
+                  <a class="dropdown-item" href="visualization-3.html">New Delhi</a>
+                  <a class="dropdown-item" href="visualization-4.html">Chennai</a>
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="comparison.html">Comparison</a>
+                <a class="nav-link" href="https://shruti-codes.github.io/WebVisualizations/comparison.html">Comparison</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="mumbai.html">Data</a>
+                <a class="nav-link" href="https://shruti-codes.github.io/WebVisualizations/mumbai.html">Data</a>
               </li>
 
 
@@ -79,16 +107,11 @@
       <!-- left side -->
       <div class="col col-12 col-md-8 divbdy">
         <br>
-        <h1>Summary: Latitude vs. Rainfall</h1>
+        <h1>Extreme Rainfall Prediction</h1>
         <hr>
         <img src="images/Fig1.png" alt="Latitude vs. Temperature" width="280" align="left">
-        <p>The purpose of this project was to analyze how weather changes as you get closer to the equator. To
-          accomplish this analysis, we first pulled data from the OpenWeatherMap API to assemble a dataset on over 500
-          cities.</p>
-        <p>After assembling the dataset, we used Matplotlib to plot various aspects of the weather vs. latitude. Factors
-          we looked at included: temperature, cloudiness, wind speed, and humidity. This site provides the souce data
-          and visualizations created as part of the analysis, as well as explanations and descriptions of any trends and
-          correlations witnesseed.</p>
+        <p>The purpose of this project was to analyze extreme rainfall conditions in India.</p>
+        <p>After assembling the dataset, we used Matplotlib to plot various aspects of the rainfall vs. other weather cariables. Factors we looked at included: temperature, pressure, horizontal wind speed, and humidity. This site provides the souce data and visualizations created as part of the analysis, as well as explanations and descriptions of any trends and correlations witnesseed.</p>
         <hr>
       </div>
       <!-- left side end -->
