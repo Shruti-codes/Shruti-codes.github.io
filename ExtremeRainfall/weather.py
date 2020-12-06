@@ -1,4 +1,4 @@
 import pandas as pd
-cities = pd.read_csv("cities.csv")
+cities = pd.read_csv("res.csv")
 
-cities.to_html("cities.html")
+cities.to_html("comparison.html")

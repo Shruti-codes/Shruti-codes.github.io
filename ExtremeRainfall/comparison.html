@@ -1,133 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Rainfall Visualization</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-   
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<style>
-a:link {
-  color: green; 
-  background-color: transparent; 
-  text-decoration: none;
-}
-
-a:visited {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:hover {
-  color: black;
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
-</style>
-
-
-<body>
-  <!-- start of header -->
-  <div>
-    <div class="row">
-      <div class="col col-6 homebtn">
-        <a href="landingpage.html">Home</a>
-      </div>
-      <div class="col col-6 menubuttons divtop">
-
-
-        <nav class="navbar navbar-expand-md navbar-light">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
-            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  Plots
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="visualization-1.html">Kolkata</a>
-                  <a class="dropdown-item" href="visualization-2.html">Mumbai</a>
-                  <a class="dropdown-item" href="visualization-3.html">New Delhi</a>
-                  <a class="dropdown-item" href="visualization-4.html">Chennai</a>
-                  <a class="dropdown-item" href="visualization-5.html">Roorkee</a>
-                  <a class="dropdown-item" href="visualization-6.html">Kanpur</a>
-                  <a class="dropdown-item" href="visualization-7.html">Jaisalmer</a>
-                  <a class="dropdown-item" href="visualization-8.html">Ahmedabad</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="comparison.html">Comparison</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="data.html">Data</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
-
-      </div>
-    </div>
-  </div>
-  <!-- start of main body -->
-  <div class="container">
-    <br>
-    <div class="row">
-      <!-- rigth side -->
-      <div class="col col-12 divbdy">
-        <br>
-        <h1>Comparison: Latitude vs X</h1>
-        <hr>
-        <p>Click any plot to get an in-depth analysis</p>
-        <div class='row'>
-          <div class="col col-12 col-md-6">
-              <h3>vs. Max Temperature</h3>
-            <a href="visualization-1.html"><img src="images/Fig1.png" alt="Latitude vs. Temperature"></a>
-          </div>
-          <div class="col col-12 col-md-6">
-              <h3>vs. Humidity</h3>
-            <a href="visualization-2.html"><img src="images/Fig2.png" alt="Latitude vs. Humidity"></a>
-          </div>
-          <div class="col col-12 col-md-6">
-              <h3>vs. Cloudiness</h3>
-            <a href="visualization-3.html"><img src="images/Fig3.png" alt="Latitude vs. Cloudiness"></a>
-          </div>
-          <div class="col col-12 col-md-6">
-              <h3>vs. Wind Speed</h3>
-            <a href="visualization-4.html"><img src="images/Fig4.png" alt="Latitude vs. Wind Speed"></a>
-          </div>
-        </div>
-      </div>
-      <!-- end of rigth side -->
-    </div>
-  </div>
-  <!-- start of footer -->
-  <br>
-   <footer>
-    <div class="container">
-      <p>&copy; My Website 2020. All Rights Reserved.</p>
-    </div>
-  </footer>
-</body>
-
-</html>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>region_name</th>
+      <th>accuracy_score</th>
+      <th>precision_score</th>
+      <th>recall_score</th>
+      <th>roc_auc_score</th>
+      <th>f1_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Ahmedabad</td>
+      <td>0.899590</td>
+      <td>0.150000</td>
+      <td>0.085714</td>
+      <td>0.524093</td>
+      <td>0.109091</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bangalore</td>
+      <td>0.907787</td>
+      <td>0.375000</td>
+      <td>0.069767</td>
+      <td>0.529266</td>
+      <td>0.117647</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>chennai</td>
+      <td>0.915984</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.498884</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>gandhinagar</td>
+      <td>0.918033</td>
+      <td>0.307692</td>
+      <td>0.114286</td>
+      <td>0.547209</td>
+      <td>0.166667</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>guwahati</td>
+      <td>0.883197</td>
+      <td>0.285714</td>
+      <td>0.037037</td>
+      <td>0.512758</td>
+      <td>0.065574</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>hyderabad</td>
+      <td>0.895492</td>
+      <td>0.200000</td>
+      <td>0.020833</td>
+      <td>0.505871</td>
+      <td>0.037736</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>itanagar</td>
+      <td>0.887295</td>
+      <td>0.500000</td>
+      <td>0.018182</td>
+      <td>0.507936</td>
+      <td>0.035088</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>jaipur</td>
+      <td>0.889344</td>
+      <td>0.250000</td>
+      <td>0.019231</td>
+      <td>0.506175</td>
+      <td>0.035714</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>jaisalmer</td>
+      <td>0.948770</td>
+      <td>0.500000</td>
+      <td>0.080000</td>
+      <td>0.537840</td>
+      <td>0.137931</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>kanpur</td>
+      <td>0.883197</td>
+      <td>0.400000</td>
+      <td>0.035714</td>
+      <td>0.514385</td>
+      <td>0.065574</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>kharagpur</td>
+      <td>0.891393</td>
+      <td>0.571429</td>
+      <td>0.074074</td>
+      <td>0.533581</td>
+      <td>0.131148</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>kolkata</td>
+      <td>0.883197</td>
+      <td>1.000000</td>
+      <td>0.050000</td>
+      <td>0.525000</td>
+      <td>0.095238</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>mawsynram</td>
+      <td>0.895492</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.500000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>mumbai</td>
+      <td>0.879098</td>
+      <td>0.518519</td>
+      <td>0.233333</td>
+      <td>0.601480</td>
+      <td>0.321839</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>New Delhi</td>
+      <td>0.911885</td>
+      <td>0.250000</td>
+      <td>0.024390</td>
+      <td>0.508839</td>
+      <td>0.044444</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>osmanabad</td>
+      <td>0.932377</td>
+      <td>0.714286</td>
+      <td>0.138889</td>
+      <td>0.567232</td>
+      <td>0.232558</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>pune</td>
+      <td>0.907787</td>
+      <td>0.611111</td>
+      <td>0.224490</td>
+      <td>0.604272</td>
+      <td>0.328358</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>roorkee</td>
+      <td>0.889344</td>
+      <td>0.250000</td>
+      <td>0.040000</td>
+      <td>0.513151</td>
+      <td>0.068966</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>thiruvananthapuram</td>
+      <td>0.932377</td>
+      <td>0.777778</td>
+      <td>0.184211</td>
+      <td>0.589883</td>
+      <td>0.297872</td>
+    </tr>
+  </tbody>
+</table>
