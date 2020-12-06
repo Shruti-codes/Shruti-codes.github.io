@@ -14,7 +14,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<style>
+<style>#map_ed8bacafeeb6497dbe3119c5ba193dbe {
+        position: relative;
+        width: 900.0px;
+        height: 500.0px;
+        left: 20.0%;
+        top: 6.0%;
+        }
+
 a:link {
   color: green; 
   background-color: transparent; 
@@ -65,10 +72,14 @@ a:active {
                   Plots
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="visualization-1.html">Kolkata</a>
+                 <a class="dropdown-item" href="visualization-1.html">Kolkata</a>
                   <a class="dropdown-item" href="visualization-2.html">Mumbai</a>
                   <a class="dropdown-item" href="visualization-3.html">New Delhi</a>
                   <a class="dropdown-item" href="visualization-4.html">Chennai</a>
+                  <a class="dropdown-item" href="visualization-5.html">Roorkee</a>
+                  <a class="dropdown-item" href="visualization-6.html">Kanpur</a>
+                  <a class="dropdown-item" href="visualization-7.html">Jaisalmer</a>
+                  <a class="dropdown-item" href="visualization-8.html">Ahmedabad</a>
                 </div>
               </li>
               <li class="nav-item">
@@ -78,7 +89,8 @@ a:active {
                 <a class="nav-link" href="mumbai.html">Data</a>
               </li>
 
-
+              
+              
               <script>
               function myMap() {
               var mapProp= {
@@ -89,8 +101,8 @@ a:active {
               }
               </script>
 
-          <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
-
+            <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+             <script src="mapdata-2.js"></script>
             </ul>
           </div>
         </nav>
