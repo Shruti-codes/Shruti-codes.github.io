@@ -48,15 +48,11 @@ h6 {
 p {
   font-size: 18px;
   line-height: 1.5;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 section {
   padding: 100px 0;
-}
-
-section h2 {
-  font-size: 50px;
 }
 
 #mainNav {
@@ -146,7 +142,7 @@ header.masthead {
   position: relative;
   width: 100%;
   padding-top: 100px;
-  padding-bottom: 150px;
+  padding-bottom: 100px;
   color: black;
   background: #ffdde1;
   background:linear-gradient(to left, #ffdde1, #94bbe9);
@@ -263,8 +259,8 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 }
 
 .bg-primary {
-  background: #fdcc52;
-  background: linear-gradient(#fdcc52, #fdc539);
+  background:#FAACA8;
+  background:linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
 }
 
 .bg-secondary {
