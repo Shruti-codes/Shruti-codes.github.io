@@ -41,3 +41,29 @@
   $(window).scroll(navbarCollapse);
 
 })(jQuery); // End of use strict
+
+var quotes = [
+'Life ki harr stage pe ek assessment zaroori hai!',
+'Darling, get out of the puddle and travel to the oceans.',
+'Have a spiritual goal.',
+'No getting out of this world without doing any good.',
+'Isn\'t love the most perfect thing to begin the day with!',
+'"Great predictions begin with one imperative - you need a lot of data."',
+'There was never a cloud that sun couldn\'t shine through.',
+'अरे मियाँ कभी लपट भी बनिये। कब तक अंदर ही सुलगते रहेंगे।',
+'If the aliens were to come to Earth, would it matter where they landed first?',
+'A step, forward or backward, is enough for a day if you learnt something concrete.',
+'If you\'re doing it with passion, don\'t think about the results.',
+'So many times when you don\'t take a step because you\'re too afraid. Don\'t be. Push yourself.',
+'The wound may not heal but your heart will.',
+'Majoritaniarism may intimidate the truth.',
+'"खुद-ब-खुद शाख़ लचक जाएगी, फल से भरपूर तो हो लेने दो"',
+'Inhale purity. Exhale impurity. Until you get pure, inside out!',
+'"जब जेब मे मनी हो तो कुंडली मे शनि होने से कोई फ़र्क नहीं पड़ता!"',
+'...ho sakta hai tumhein apni keemat hi naa pata ho'
+]
+
+function newQuote() {
+  var randomNo = Math.floor(Math.random() * (quotes.length));
+  document.getElementById('quote').innerHTML = quotes[randomNo];
+}
