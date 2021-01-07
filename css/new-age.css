@@ -2,30 +2,66 @@ html,
 body {
   width: 100%;
   height: 100%;
-}
-
-body {
+  background: radial-gradient(circle at bottom, navy 20%, black 80%);
+  overflow: visible;
   font-family: 'Helvetica', 'Arial', 'sans-serif';
 }
 
-a {
-  color: #fdcc52;
-  transition: all .35s;
+.space {
+  background: rgba(128, 0, 128, 0.05) center / 150px 150px round;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-a:hover, a:focus {
-  color: #fcbd20;
+.stars1 {
+  animation: space 180s ease-in-out infinite;
+  background-image: 
+    radial-gradient(1px 1px at 25px 5px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(1px 1px at 50px 25px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(1px 1px at 125px 20px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(1.5px 1.5px at 50px 75px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(2px 2px at 15px 125px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(2.5px 2.5px at 110px 80px, white, rgba(255, 255, 255, 0));
 }
 
-hr {
-  max-width: 100px;
-  margin: 25px auto 0;
-  border-width: 1px;
-  border-color: rgba(34, 34, 34, 0.1);
+.stars2 {
+  animation: space 240s ease-in-out infinite;
+  background-image: 
+    radial-gradient(1px 1px at 75px 125px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(1px 1px at 100px 75px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(1.5px 1.5px at 199px 100px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(2px 2px at 20px 50px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(2.5px 2.5px at 100px 5px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(2.5px 2.5px at 5px 5px, white, rgba(255, 255, 255, 0));
 }
 
-hr.light {
-  border-color: black;
+.stars3 {
+  animation: space 300s linear infinite;
+  background-image: 
+    radial-gradient(1px 1px at 10px 10px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(1px 1px at 150px 150px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(1.5px 1.5px at 60px 170px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(1.5px 1.5px at 175px 180px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(2px 2px at 195px 95px, white, rgba(255, 255, 255, 0)), 
+    radial-gradient(2.5px 2.5px at 95px 145px, white, rgba(255, 255, 255, 0));
+}
+
+@keyframes space {
+  40% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  60% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 h1,
@@ -36,6 +72,7 @@ h5,
 h6 {
   font-family: 'Times New Roman', 'Lucida Handwriting', 'Helvetica', 'Papyrus';
   font-weight: 100;
+  color: mistyrose;
   letter-spacing: 1px;
 }
 
@@ -45,15 +82,17 @@ p {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 5px;
+  color:thistle;
 }
 
 section {
   padding: 100px 0;
+  background-color: transparent;
 }
 
 #mainNav {
   border-color: rgba(34, 34, 34, 0.05);
-  background-color: #200000 ;
+  background-color: #220000 ;
   transition: all .35s;
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
@@ -79,7 +118,7 @@ section {
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: blue;
+  color: whitesmoke;
 }
 
 #mainNav .navbar-nav > li > a.active {
@@ -130,18 +169,17 @@ section {
 header.masthead {
   position: relative;
   width: 100%;
-  padding-top: 65px;
-  padding-bottom: 50px;
-  color: black;
-  background: #ffdde1;
-  background:linear-gradient(to left, #ffdde1, #94bbe9);
+  padding-top: 60px;
+  padding-bottom: 60px;
+  color: white;
+  background: transparent;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 500px) {
   header.masthead {
     height: 100vh;
     min-height: 500px;
-    padding-top: 50px;
+    padding-top: 65px;
     padding-bottom: 0;
     padding-right: 0;
   }
@@ -153,15 +191,12 @@ section.download {
 }
 
 section.features .section-heading {
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 
 section.cta {
   position: relative;
   padding: 10px 0;
-  background-color: beige;
-  background-position: center;
-  background-size: cover;
   border: 1px ;
 }
 
@@ -171,7 +206,6 @@ section.cta .overlay {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
 }
 
 section.contact ul.list-social li a {
@@ -220,32 +254,20 @@ section.contact ul.list-social li.social-wordpress a {
 
 section.contact ul.list-social li.social-instagram a {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); 
-    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);  
+  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);  
 }
 
 footer {
-  padding: 10px 0;
+  padding: 0px 0;
   text-align: center;
   color: rgba(255, 255, 255, 0.3);
-  background-color: #222222;
+  /*background-color: #222222;*/
+  background-color: transparent;
 }
 
 footer p {
   font-size: 12px;
   margin: 0;
-}
-
-footer ul {
-  margin-bottom: 0;
-}
-
-footer ul li a {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.3);
-}
-
-footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li a.active {
-  text-decoration: none;
 }
 
 .bg-primary {
@@ -289,6 +311,7 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
   margin-top: 0px;
   border-left: 2px double #0563bb;
   position: relative;
+  color: white;
 }
 
 .resume .resume-item h4 {
@@ -296,7 +319,8 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
   font-size: 17px;
   font-weight: 520;
   font-family: "Poppins", sans-serif;
-  color: #0563bb;
+  /*color: #0563bb;*/
+  color: cornsilk;
 }
 
 .resume .resume-item h5 {
@@ -320,9 +344,14 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
   border-radius: 15px;
   left: -7px;
   top: 0;
-  background: radial-gradient(circle at bottom, navy 0%, black 100%);
-  background-color: rgba(128, 0, 128, 0.1) center / 100px 100px round;
-  border: 0.5px solid purple;
+  background-color: floralwhite;
+  border: 0.5px solid gray;
   overflow: hidden;
  animation: ease-in-out infinite;
+}
+
+@media (max-width: 360px) {
+  .container {
+    width: 1170px;
+  }
 }

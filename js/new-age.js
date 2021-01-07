@@ -60,7 +60,15 @@ var quotes = [
 '"खुद-ब-खुद शाख़ लचक जाएगी, फल से भरपूर तो हो लेने दो"',
 'Inhale purity. Exhale impurity. Until you get pure, inside out!',
 '"जब जेब मे मनी हो तो कुंडली मे शनि होने से कोई फ़र्क नहीं पड़ता!"',
-'...ho sakta hai tumhein apni keemat hi naa pata ho'
+'...ho sakta hai tumhein apni keemat hi naa pata ho',
+'When a metric becomes a target, it ceases to be a good metric. - Goodhart\'s Law.',
+'Be around people who inspire you to think fresh and not merely follow prejudices.',
+'You can\'t control the outer world. So mind your own business.',
+'कोई कहानी अधूरी नहीं रहती। अंत केवल किरदारों का होता है। कहानी चल देती है अपने अंत की ओर।',
+'Save first before you start spending.',
+'Keep them short and crisp, conversations and dresses',
+'The amount of insecurities within a person eat him/her more than the outer world will. These insecurities are the result \
+\ of your own thinking. By bypassing their effect on your mind, you\'d truly do justice to yourself.'
 ]
 
 function newQuote() {
