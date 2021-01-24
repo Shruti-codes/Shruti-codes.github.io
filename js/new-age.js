@@ -68,7 +68,20 @@ var quotes = [
 'Save first before you start spending.',
 'Keep them short and crisp, conversations and dresses',
 'The amount of insecurities within a person eat him/her more than the outer world will. These insecurities are the result \
-\ of your own thinking. By bypassing their effect on your mind, you\'d truly do justice to yourself.'
+\ of your own thinking. By bypassing their effect on your mind, you\'d truly do justice to yourself.',
+'Look after people you love when they\'re alive because if they die in misery, the regret is difficult to carry.',
+'You can\'t expect new results with outdated methods.',
+'Choose your company wisely. You become like people you spend time with.',
+'आसानी से मिलने वाली मंज़िल में मज़ा कैसा !',
+'”Neither can embellishments of language be found without arrangement and expression of thoughts,\
+nor can thoughts be made to shine without the light of language.”',
+'"Our thoughts make things beautiful. Our thoughts make things ugly. The whole world is in our own minds.\
+Learn to see things in the proper light." - Swami Vivekananda',
+'Nothing is too long to persist. Everything passes. You gotta believe in yourself.',
+'Learning is never difficult. You just need the right reference.',
+'तेरा हौसला ना टूट पाए कभी,\
+ऐसा यक़ीन रख अपनी कोशिशों में',
+'When you take charge of everything that goes through your mind, that\'s where begins the \'calm\'.'
 ]
 
 function newQuote() {

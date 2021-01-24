@@ -6,8 +6,8 @@
  */
 html {
   box-sizing: border-box;
-  -ms-overflow-style: scrollbar;
-}
+  -ms-overflow-style: auto;
+  }
 
 *,
 *::before,
@@ -17,10 +17,11 @@ html {
 
 .container {
   width: 100%;
-  padding-right: 15px;
+  padding-right: 0px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  overflow-x: hidden;
 }
 
 @media (min-width: 576px) {
@@ -49,7 +50,7 @@ html {
 
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
   width: 100%;
-  padding-right: 15px;
+  padding-right: 0px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
