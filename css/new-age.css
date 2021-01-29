@@ -66,7 +66,6 @@ body {
 
 h1,
 h2,
-h3,
 h4,
 h5,
 h6 {
@@ -75,6 +74,12 @@ h6 {
   color: mistyrose;
   letter-spacing: 1px;
 }
+
+h3 {  font-family: 'Times New Roman', 'Lucida Handwriting', 'Helvetica', 'Papyrus';
+  font-weight: 5;
+  font-size: 12px;
+  color: mistyrose;
+ }
 
 h1 img {float:left;margin:0 5px 0 0}
 
