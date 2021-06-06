@@ -90,6 +90,13 @@ p {
   color:thistle;
 }
 
+ul,ol {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+  color:rosybrown;
+}
+
 section {
   padding: 100px 0;
   background-color: transparent;

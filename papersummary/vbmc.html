@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0 , shrink-to-fit=no">
+  <meta name="description" content="Portfolio">
+  <meta name="author" content="Shruti Sharma">
+
+   <title>Shruti Sharma | Portfolio</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+	  <!-- Custom styles for this template -->
+  <link href="../css/new-age.min.css" rel="stylesheet">
+  <link href="../css/new-age.css" rel="stylesheet">
+</head>
+
+<style>
+	
+p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+  color:thistle;
+}
+
+</style>
+
+<body style="background-color:lightskyblue;">
+
+<div class="container" style="margin-left: 50px; margin-right: 30px;margin-bottom: 20px;">
+
+<body style="background-color:lightgoldenrodyellow;">
+
+<h3> Paper-1 : <a href="https://arxiv.org/abs/1810.05558" target="_blank">arXiv</a></h3>
+<h3> Paper-2 <a href="https://arxiv.org/abs/2006.08655" target="_blank">arXiv</a></h3>
+
+<h2><em><strong>Variational Bayesian Monte Carlo</strong></em> </h2>
+<ul>
+<li>Variational Inference +  Bayesian Quadrature (Bayesian Monte Carlo) </li>
+<li>framework for inference for models with expensive likelihood</li>
+<li>axis-aligned so cannot deal with highly correlated posteriors</li>
+
+</ul>
+
+<h4>Result</h4>
+<ol>
+<li> Nonparametric analytical approximation of posterior distribution of unobserved variables (parameters + latent variables), to do statistical inference over them. </li>
+<li> Approximate lower bound for model evidence (marginal likelihood, Bayes factor) of the observed data, can be used for model selection. Idea is that higher the marginal likelihood for a given model, it is a better fit over the data by that model so has greater probability that this model generated the data. </li>
+</ol>
+<p style="font-size: 14px;"> We can also use sampling-based methods (MCMC eg. Gibbs Sampling) to approximate the intractable solution of an inference problem.
+</p>
+<h4>Why not MCMC?</h4>
+<ul>
+<li>May take huge time to find global optimal solution but will always do if given enough time. </li>
+<li>Require choosing appropriate sampling technique beforehand. </li>
+</ul>
+
+<h4>Variational Inference (Variational Bayesian Methods, Variational Bayes, VI) </h4>
+<ul>
+<li>statistical tool for approximate inference </li>
+<li>to track intractable integrals </li>
+<li>considers inference as an optimisation problem </li>
+<li>almost never finds the global optima </li>
+<li>Diff b/w EM and VI : no distinction between latent variable and parameter in VI but EM puts distinction on both </li>
+</ul>
+<p style="font-size: 14px;">intractable distri P ~ q belonging to tractable distri Q </p>
+<h4>Kullback-Leibler Divergence </h4>
+<ul>
+<li>measure differences in information contained within two distri q, p </li>
+<li> >= 0 for all q, p </li>
+<li> = 0 iff q = p </li>
+<li> not symmetric </li>
+</ul>
+<p style="font-size:14px">
+KL(q || p) = \sum ( q(x) log ( q(x) / p(x) ) 
+<br>
+Optimisation objective - J(q) - captures similarity b/w q and p
+</p>
+<h4>Bayesian Quadrature (BQ) </h4>
+<ul>
+<li> quadrature : finding area of something; expressing solution as integral </li>
+<li> to obtain Bayesian estimates of mean and variance of non-analytic integrals in variational objective </li>
+<li> model-based integration - allows active learning about single fixed integral and minimize their variance; require fewer samples than MCMC </li>
+<li> usually gaussian kernel in GP prior otherwise the integral is intractable </li>
+<li> works well in low-dim (< 10) </li>
+<li> Acq func eg 1 - expected entropy : minimize expected entropy after adding x to training set </li>
+<li> Acq func eg 2 - uncertainty sampling strategy : maximize variance of integrand at x </li>
+</ul>
+<p style="font-size:14px">
+(f) = \int f(x) \pi (x)dx, 
+<br>
+Here, f(x) - GP prior & π(x) - known prob distri
+</p>
+<h4>Gaussian Process </h4>
+<ul>
+<li> inf dim Gaussian r.v. </li>
+<li> stochastic process - systems randomly changing over time; process can evolve in any dir (realizations); eg. Brownian motion </li>
+<li> kernel based prob distri </li>
+<li> to specify prior over unknown functions in Bayesian inference </li>
+<li> real-valued mean function m and PSD covar/kernel function K </li>
+<li> Why PSD? K should be such that for any set x1, . . . , xm \in X , covar matrix K should be valid corr to some MVN. This happens when K is PSD. Must satisfy Mercer's conditions. </li>
+<li> any valid kernel function can be used as covar func. </li>
+<li> any finite subcollection of random variables has a multivariate Gaussian distribution. </li>
+<li> smoothness of the prior comes from covar </li>
+</ul>
+
+<h4>Active Sampling </h4>
+<ul>
+<li> When variance of posterior depends on func values </li>
+<li> acquisition function [a:X->R] - determines how we search for new points by solving proxy optimisation x_new = argmax_x a(x) </li>
+<li> for GP prior, acq. func. is a func of mean of f(x*) , std of f(x*) , & y_best seen during opt. </li>
+</ul>
+
+
+<h3>VBMC Algo</h3>
+
+<p style="font-size: 14px;"> In each iteration t, </p>
+<ol>
+<li>sequentially sample a batch of new points n_active that maximise acquisition func. a(\theta) and evaluate log joint f at each point </li>
+<li> train GP surrogate model of log joint f; training set is points evaluated so far </li>
+<li> update variational posterior approx. by optimising surrogate ELBO calculated via Bayesian quadrature. </li>
+</ol>
+<p>
+VI using GP as surrogate model f for expensive log posterior. Keep updating GP using active sampling. 
+<br>
+In each iteration except 1st, VBMC samples n_active  (=5) points. Select each point sequentially, by optimising acquisition func. & apply fast rank-one updates of GP posterior after each acquisition.
+No sampling in first iteration so that variational posterior can adapt.
+<br>
+Algo works in unconstrained inference space R^D but parameters with bound constraints can be handled via nonlinear remapping of input space via a shifted and rescaled logit transform, with Jacobian correction of log prob density. Solutions are ed back to the original space via a matched inverse transform, e.g., a shifted and rescaled logistic function for bound parameters.
+</p>
+<h4>Variational Posterior q(\theta) </h4>
+<ul>
+<li> from a non-paramteric family </li>
+<li> mixture of K Gaussians with shared diagonal covariance matrix \Sigma, modulo a scaling factor ; w_k = weight of kth comp ; \mu_k = mean of kth comp ; \sigma_k = scale of kth comp </li>
+<li> \phi = (w1,...,wK,\mu1,...,\muK,\sigma1,...,\sigmaK,\lambda) ; \phi has K +  DK + K + D parameters </li>
+<li> K is set adaptively (K=2 initially) </li>
+<li> Variational paramters in t-th iter - φ_t </li>
+</ul>
+
+<h4> ELBO (Evidence Lower Bound, negative free energy) </h4>
+<ul>
+<li> need to approximate </li>
+<li> using 2 ways 
+	<ul>
+    <li> approximate log joint prob f with GP with SE(rescaled) kernel, Gaussian likelihood with obs. noise σ_obs > 0 (for numerical stability) & neg quadratic mean func m(x) to ensure finiteness of variational objective </li>
+    <li> approximate entropy of variational posterior q(θ) and its gradient via Monte Carlo sampling & reparametrization trick. </li>
+</ul>
+</li>
+<li> using mean expected log joint E_phi (f) ,  entropy and their gradients , optimize neg mean ELBO via SGD </li>
+</ul>
+ <p>
+GP f : SE kernel, gaussian likelihood, negative quadratic mean function. GP hyperparam are estimated via MCMC when there’s large uncertainty about GP and then via MAP estimates using gradient-based optimization.
+</p>
+<h4>ELCBO (Evidence Lower Confidence Bound) </h4>
+<ul>
+<li> first 2 terms : ELBO, estimated via Bayesian Quadrature </li>
+<li> 3rd term : uncertainty in computation of expected log joint * risk sensitivity param </li>
+<li> probabilistic lower bound on ELBO </li>
+<li> assess improvement of variational solution </li>
+</ul>
+<p style="font-size:14px;">
+In VBMC algo, do active sampling sequentially to find sequence of integrals across iterations 1 ..., T s.t.
+</p>
+<ul>
+    <li> seq of variational parameters converge to variational posterior that minimize KL-divergence with true posterior </li>
+    <li> min var on final estimate of ELBO </li>
+</ul>
+<p style="font-size:14px;">2 acquisition functions for VBMC based on uncertainty sampling (operate pointwise on posterior density) </p>
+<ul>
+<li> <b>Vanilla uncertainty sampling a_us </b> : for exploitation; maximizes variance of integrand under current variational parameters </li>
+<li> <b> Prospective uncertainty sampling  a_pro(\theta) </b>: for exploration ; reducing uncertainty of variational objective both for current posterior & at prospective locations where variational posterior might go; Selects points from regions of high prob density; variational posterior acts as regularizer - preventing active sampling from following eager fluctuations of GP mean </li>
+</ul>	
+<h4>Adaptive treatment of GP hyperparam</h4>
+<ul>
+<li> 3D+3 </li>
+<li> empirical Bayes prior based on current training set </li>
+<li> in each iteration, collect n_gp samples. </li>
+<li> Using these samples and r.v. X that depends on samples, find expected mean and var of X. </li>
+<li> Algo switches to MAP estimation of hyperparatwsm via gradient-based opt. when variability of expected log joint of samples falls below threshold </li>
+</ul>
+<h4>Initialization </h4>
+<ul>
+<li>x_0 = starting point from region of high posterior prob mass. </li>
+<li>PUB, PLB = vectors identifying region of high posterior prob mass in param space </li>
+<li>n_init = 10 ; to randomly uniformly sample 10 points in plausible box Uniform[PLB,PUB] </li>
+<li>Plausible box sets reference scale for each var. </li>
+</ul>
+
+<h4>Warm up </h4>
+<ul>
+<li> to converge faster to regions of high posterior prob </li>
+<li> initialize variational posterior with K=2 comp </li>
+<li> end when ELCBO shows improvement less than 1 for 3 consecutive iters. </li>
+<li> do trimming </li>
+</ul>
+
+<h4>Adaptive num of mixture comps - K </h4>
+<ul>
+<li> variational sol is improving if ELCBO of last iter is > ELCBO of last n_recent (=4) iters </li>
+<li> in each iter, increment K by 1 if sol is improving (improvement in ELBO) </li>
+<li> to speed up adaptation, add 2 extra comp if sol is stable. Each new comp is created by splitting and jittering random existing comp. </li>
+<li> At end of each variational opt. , prune random comp k with w_k < w_min </li>
+</ul>
+
+<h4>Termination </h4>
+<ul>
+<li> assign reliability index to current sol </li>
+<li> terminate when stable sol for n_stable (=8) iters or when reaching n_max func evals </li>
+<li> return estimate of mean and std of ELBO (lower bound on marginal likeli) & variational posterior  </li>
+</ul>
+
+<h4>Future Work </h4>
+<ul>
+ <li>plausible box to inform other aspects of algo. Plausible box sets reference scale for each var. </li>
+</ul>
+<h4>Variational whitening </h4>
+<ul>
+<li> technique to deal with non-axis aligned posteriors that are problematic for VBMC in noise. </li>
+<li> W transform inference space linearly (rotation and rescaling) s.t.  q(\theta) has unit diagonal covariance matrix C_\phi </li>
+<li> Find W by doing SVD of C_\phi </li>
+</ul>
+
+<h4>Acq func:</h4>
+<ol>
+	<li> a_npro </li>
+    <li> Global Acq func:
+    	<ul>
+    <li> driven by uncertainty in posterior mass </li>
+    <li> account for non-local changes in GP model when making new obs </li>
+</ul>
+	<b>EIG (Expected Information Gain) </b>
+	<ul>
+	<li> sample points that maximize EIG of integral G (eqn 2) </li>
+	<li> choose next location θ* that maximizes mutual information I[G;y*] ; G=expected log joint, y* = new obs </li>
+</ul>
+	<b>IMIQR/VIQR  </b>
+	<ul>
+	<li> IQR (interquantile range) : estimate of uncertainty of unnormalized posterior </li>
+	<li> integral is intractable so approximate it using MCMC and importance sampling </li>
+</ul>
+</li>
+</ol>
+
+<h4>Applications </h4>
+<p style="font-size:14px;">Application of Kriging and Variational Bayesian Monte Carlo method for improved prediction of doped UO2 fission gas release
+</p>
+</div>
+
+  <footer>
+    <div class="container">
+      <img src="https://visitor-badge.glitch.me/badge?page_id=https://shruti-codes.github.io" alt="Views"/>
+      <p>&copy; My Website 2021. Some Rights Reserved.</p>
+    </div>
+  </footer>
+  
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0 , shrink-to-fit=no">
+  <meta name="description" content="Portfolio">
+  <meta name="author" content="Shruti Sharma">
+
+   <title>Shruti Sharma | Portfolio</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+	  <!-- Custom styles for this template -->
+  <link href="../css/new-age.min.css" rel="stylesheet">
+  <link href="../css/new-age.css" rel="stylesheet">
+</head>
+
+<body style="background-color:lightskyblue;">
+
+<div class="container" style="margin-left: 50px; margin-right: 30px;margin-bottom: 20px;">
+
+<h3> Paper : <a href="https://arxiv.org/abs/1908.02144" target="_blank">arXiv</a></h3>
+
+<h2>Bayesian Batch Active Learning as Sparse Subset Approximation (NeurIPS, 2019) </h2>
+
+<p style="font-size:14px;">Can use huge unlabelled data to improve supervised models. Use probabilistic active learning (AL) methods to greedily select most informative data-points to be labelled. However, greedy methods are computationally infeasible so can select only subset (batch) of points D' and suffer from no model change. <br>
+So, they used bayesian batch active learning approach that approximates complete data posterior of model parameters. Algorithm produces batches that enable efficient active learning. </p>
+
+<h4>AL</h4>
+<p style="font-size:14px;"> No access to labels before querying pool-set </p>
+<ul>
+<li> <b> Bayesian perspective </b> : Choose points that reduce uncertainty in posterior over model parameters - combinatorial opt problem - NP hard 
+<ul>
+    <li> These choose points considering posterior distri of model param θ. </li>
+    <li> Query the model M times and get optimal complete data posterior using Bayes’ rule = (prior of θ  * likelihood) / marginal. </li>
+    <li> greedily choose points where predictive posterior is most uncertain eg max variance & max entropy. </li>
+    <li> or, choose points that maximally improve expected information gain </li>
+</ul>
+</li>
+
+<li> <b>Information-theoretic perspective </b>: iteratively solve greedy approximation - using max pred entropy [MAXENT] or max inf gain.
+	<ul>
+    <li> select points X’ that are maximally informative or minimize expected posterior entropy. </li>
+    <li> intractable equation as we need to consider all subsets of pool set </li>
+    <li> query a datapoint and update model until query budget exhausted </li>
+    <li> myopic approach </li>
+    <li> BALD : approximation that chooses point x that maximizes decrease in expected entropy </li>
+</ul>
+</li>
+
+<li> select batch in each AL iteration - <b>Batch AL </b>
+	<ul>
+    <li> reduce computational burden </li>
+    <li> significant learning updates </li>
+    <li> both, prob and non-prob</li>
+    <li> naive batch construction methods using standard acq func and selecting b (query budget) highest-scoring points result in correlated queries i.e. most budget expenditure on repeatedly choosing nearby points eg MAXENT (naively construct batch using top-b points acc to maximum entropy criterion) and BALD </li>
+</ul>
+</li>
+</ul>
+<h4>Approach </h4>
+<ul>
+<li> re-cast batch construction as optimizing a sparse subset approximation to the expected complete data log posterior </li>
+<li> model agnostic Bayesian batch AL </li>
+<li> on discriminative models parameterized by θ </li>
+<li> use model to predict labels but no need to update the model each time after every data point </li>
+<li> Task : perform posterior inference over model param θ </li>
+<li> Key idea : choose a batch D’ such that updated log posterior best approximates complete data log posterior. </li>
+</ul>
+
+<br>
+<p style="font-size:14px;"> Initial Labelled Dataset : D_0 <br>
+Unlabelled Poolset : X_p <br>
+Corr labels : Y_p
+<p>
+<h4>Batch Construction as Sparse Approximation </h4>
+<p style="font-size:14px;">Choose batch that best approximates \sum_m L_m(θ) since first term in eqn 4 depends only on D_0
+Construct batches by solving  w* =minimize ||L−L(w)||^2 in Hilbert space induced by inner product L_nL_m
+The choice of inner product introduces notion of directionality into optimization procedure - thus, query batches are constructed while also accounting for similarity between selected points.
+<br>
+On probit regression task : For BALD, choose b=10 to find most informative points. BALD acq func does not change during batch construction. ACS acq func rotates after each selected data point. ACS-FW is able to spread the batch in data space, avoiding the strongly correlated queries that BALD produces. </p>
+
+<p style="font-size:14px;"> <i>Q) What does this quantity mean? How is it used to select a batch D' of inputs w ? </i>
+<br>
+We re-cast batch construction process as sparse approximation to complete data log posterior defined in eqn 4. Since the first term in eqn 4 only depends on D_0, so we select a batch D’ that best approximates the 2nd term of eqn 4 i.e.  \sum_m L_m(θ). Here, L_m are considered as vectors in function space. Let binary weight vector w ∈ {0, 1}^M constrain the points that should be included in batch D’ so we write L(w) = \sum_m w_m L_m. The sparse subset approximation problem becomes solving for optimal weights w* =minimize || L−L(w) ||^2 
+This objective function approximates L such that the posterior lies as close to the expected complete data log posterior as possible, if we had observed the complete pool.
+
+<br>
+<br>
+The relaxed objective that is minimized is, w* = minimize (1−w)^T K(1−w).
+It is obtained when the weight vector w is changed from being binary to being non-negative. The cardinality constraint is replaced with polytope constraint in Hilbert space. This objective is solved using Frank-Wolfe algorithm that converges to optimal w* after b iterations. The optimum of objective function is attained at vertices of polytope. The weights are iteratively updated along the f-th vertex of polytope. This means adding atmost one data point to a batch in every iteration. 
+
+<br>
+<br>
+
+Bayesian linear regression and Probit regression. In the paper, they have used weighted Fisher inner product to get closed form expressions for these models.
+For general models, where acquisition function might not be available in closed form, they suggested to use random feature projections that allows us to approximate they key quantities that are needed during batch construction. This method scales linearly in poolset size |P|. The appropriate projection is,
+Lˆn=√1 [Ln(θ1),···,Ln(θJ)]T, θj∼πˆ, 
+i.e. Lˆn represents the J-dimensional projection of Ln in Euclidean space </p>
+
+</div>
+
+  <footer>
+    <div class="container">
+      <img src="https://visitor-badge.glitch.me/badge?page_id=https://shruti-codes.github.io" alt="Views"/>
+      <p>&copy; My Website 2021. Some Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+</html>

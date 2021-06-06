@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0 , shrink-to-fit=no">
+  <meta name="description" content="Portfolio">
+  <meta name="author" content="Shruti Sharma">
+
+   <title>Shruti Sharma | Portfolio</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+	  <!-- Custom styles for this template -->
+  <link href="../css/new-age.min.css" rel="stylesheet">
+  <link href="../css/new-age.css" rel="stylesheet">
+</head>
+
+<style>
+	
+p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+  color:thistle;
+}
+
+</style>
+<body style="background-color:palegoldenrod;">
+<div class="container" style="margin-left: 50px; margin-right: 30px;margin-bottom: 20px;">
+
+<h3> Paper : <a href="https://arxiv.org/abs/1901.06796">arXiv</a></h3>
+
+<h2> Adversarial Attacks on Deep Learning Models in Natural Language Processing: A Survey </h2>
+
+<p>Most attention is put on adversarial techniques in Computer Vision applications (>3 times than in NLP).
+The most popular, state-of-the-art DNNs are vulnerable to modified samples.
+Owing to black-box and overconfident working of DNNs, they are easily fooled by perturbed samples. Adversarial attacks meant for images won't work for textual data owing to underlying differences - 
+<ol>
+<li> Continuous vs discrete: Gradient-based adversarial attacks (orig. for images) on textual vectorised data gives invalid characters; not useful even with word embeddings. Image data (pixel values) is continuous but textual data (tokens) is discrete so input perturbation is meaningless if we consider tokens as our input space. Discrete data is hard to optimize. </li>
+
+<li> Perceivable vs Unperceivable: text embeddings might be really sensitive to small perturbations. In fact, a small perturbation might result in a sentence with an incorrect syntactic structure or completely different semantic meaning.</li>
+
+<li> Semantic vs semantic-less: perturbation on texts would easily change the semantics of a word and a sentence, thus can be easily detected and heavily affect the model output. Changing semantics of the input is against the goal of adversarial attack. </li>
+</ol>
+
+<h4>Attributes of threat (attacking) model: </h4>
+<ol>
+<li> Black-box (no info [arch, param, training data] about DNN; only access to
+victim's predictions on specified inputs) vs White-box (full known info of
+victim model) </li>
+<li> Change output to incorrect (un-targeted) vs pre-specified (targeted) label. </li>
+<li> Granularity - use of word, character, or sentence level embedding </li>
+<li> Attack (evaluate robustness of DNN) vs Defense (robustify DNN) </li>
+</ol>
+
+<h4>Constraints on attacks: </h4>
+<ol>
+<li> Perturbation constraint - \epsilon shouldn't modify prediction of ideal DNN, shouldn't end up having nil effect on target DNN.
+	<ol>
+		<li> Norm-based [on vectorised rep] : no use as discrete data </li>
+		<li> Grammar and syntax related
+			<ul>
+		<li> Grammar and syntax checker - check validity of adv. examples </li>
+		<li> Perplexity - measure quality of language model. </li>
+		<li> Paraphrase - type of adv. eg. </li>
+	</ul>
+</li>
+	 <li> Semantic preserving [on both] : measure semantic similarity. N-dim word vectors p & q
+	 	<ul>
+ 		<li> Euclidean dist. - d(p,q) </li>
+		<li> Cosine similarity - works better than other dist measures because norm of vector is related to overall frequency of which words are in training corpus. Direction and cosine dist will not be affected by this.
+		cos(p,q) = p.q / ||p|| . ||q|| </li>
+	</ul>
+</li>
+
+<li> Edit-based [on orig rep]: edit distance is min changes from one string to other; used to quantify dissimilarity
+<ul>
+<li> Levenshtein dist. - insertion, removal, substitution ops on
+chars in string. </li>
+<li> Word-Mover’s dist (WMD) - operated on word embeddings; min dist that embedded words of one doc needs to travel to reach embedded words of other doc </li>
+<li> Number of changes </li>
+</ul>
+</li>
+<li> Jaccard Similarity coeff [on orig] - use intersection & union to find similarity in finite sample sets. Large J means high sample similarity <br>
+J(A,B) = [ A \inter B ] / [ A \union B] </li>
+</ol>
+<li> Attack Evaluation - Choose metrics as per task at hand. </li>
+</ol>
+
+<p>CNN for Sentence Classification [Yoom Kim] - Word2Vec to represent input; convolve in
+word sequence’s direction; multiple filters in pooling layers. </p>
+<p>CNN for Text Classification [Zhang et al] - character level one-hot encoding; data augmentation </p>
+<p>RNN for Language Modeling [Bengio et al] - find prob of seq of words in recurrent mode; i/p is feature vectors of preceding words; o/p is conditional prob over output vocab.</p>
+<p>Seq2Seq model for NMT - OpenNMT; Seq2Seq models can generate another sequence inf from given seq inf using encoder-decoder arch; 2 RNNs - i) Encoder : process i/p and compress it in vector rep. ii) Decoder : predict o/p </p>
+<p>Attention model for Machine Comprehension - BiDAF; to encode long sequences; Attention allows decoder to look back on hidden states of source seq. Hidden states give weighted avg as another i/p to decoder. Vanilla-attention models look at input seq. Self-attention models look at surrounding words in seq to get context-sensitive word rep. </p>
+<p>Reinforcement Learning Models in Dialogue systems </p>
+<p>Deep Generative Models - generate realistic textual data in latent space; GANs and VAEs ; VAEs - encoder + generator. Encoder encodes i/p into latent space. Generator generates samples from latent space. </p>
+
+<i>Some adv examples' notations : </i>
+<ul>
+<li> L-BFGS : effective but expensive; Find minimum distance between original points and adversarial points that can make the output (label) incorrect.
+adv i/p = x + 𝝶 ;
+y’ = target o/p of x+𝝶 ; fixed
+J - cost function of DNN
+ƛ - hyperparam to balance eqn.
+</li>
+<li> FGSM : uses gradients to attack; fast computation; adds noise to whole image that is proportional to 𝑠𝑖𝑔𝑛(∆𝑥 𝐽(𝑥, 𝑦)); Hypothesis - modern DNNs encourage
+linear behavior for computational gains. fix size of 𝝶 and maximize cost
+Apply 1st-order Taylor series approximation for linearization Get closed-form for 𝝶
+𝝐 - perturbation size set by attacker; controls perturbation magnitude; sign(x) - sign func; 1 when x>0 , -1 when x<0 , else 0
+∆𝑥 𝐽(𝑥, 𝑦) - gradient of loss func J wrt i/p ; calc by backprop</li>
+<li>JSMA : generate adv egs using forward deriv; greedily modify input-instance feature-wise; find NN’s o/p sensitivity (𝐹𝑗) wrt each i/p (𝑥𝑖) using Jacobian
+Matrix/adversarial saliency maps; more effective as attackers have control over perturbations; the saliency map ranks i/p component’s contri to adv target - how important each feature is for the prediction ; select perturb from this map
+Jacobian matrix of i/p x -
+𝐽𝑎𝑐𝑏[𝑖,𝑗]= δ𝐹𝑖
+𝐹 δ𝑥𝑖
+𝑥𝑖 is i-th comp of x ; 𝐹𝑗is j-th comp of o/p ; F - logits layer</li>
+<li>C&W Attack : evaluate defensive distillation strategy; restrict perturbations to l_p norm (p=0,2,inf) & opt. 7 versions of J ; measure image distortion by max amount of changed pixels.</li>
+<li>DeepFool : iterative; L2-reg algo; assume neural net is linear, find optimal (min dist) hyperplane (direction) that separates classes (decision boundary), construct adv egs using this sol; to care about non-linearity, repeat process until true adv eg is found</li>
+</ul>
+
+<h4>Attacks</h4>
+<ol>
+	<li> Model access group - knowledge of attacked model when attack is done
+		<ol>
+		<li> White-box attacks : full info of model; worst-case attack; more effective than black-box
+			<ol>
+			<li> FGSM (Fast Gradient Signed Method) based [deets - https://www.tensorflow.org/tutorials/generative/adversarial_fgsm]
+				<ol>
+					<li> TextFool - approximate contri (magnitude) of text items (hot phrases) that play role in text classification using cost gradients; done manually; insertion, modification, removal strategy;
+						<ol>
+							<li> find cost gradient ΔJ(f, x, c’) using backprop [f=model func, x=training sample, c’=target class, c=orig class] </li>
+							<li> Find hot characters - word level : ones with max highest gradient. Character level : HTPs contain hot chars and are frequent. </li>
+							<li> Insertion : insert HTPs of c’ near phrases of c </li>
+							<li> Modification : identify HSPs and replace chars in HTPs with misspellings etc; follow dir of cost gradient ΔJ(f,x,c) and opposite dir of ΔJ(f,x,c’) </li>
+							<li> Removal : remove adjs/adv from HSPs </li>
+							<li> test on CNN text classifier </li>
+						</ol>
+					</li>
+					<li> Removal-addition-replacement strategy - words are ordered acc to contri ; greedy
+						<ol>
+							<li> Remove adv. (w_i) that conti most to text classf. </li>
+							<li> If incorrect grammar in o/p, insert candidate word p_j before w_i </li>
+							<li> If no highest cost grad for all p_j in o/p, then replace w_i with p_j </li>
+						</ol>
+					</li>
+					<li> Malware Detection - identify malicious software using PEs as features ; PE rep. as m-dim binary vector, 1=PE present, m=num of PEs ; 2 works -
+						<ol>
+							<li> 4 bounding methods to create adv.eg.
+								<ol>
+									<li> First 2 use multi-step FGSM ; restrict perturbations in binary domain using dFGSM & rFGSM </li>
+									<li> 3rd method - multi-step BGA : set j’th feature bit if corr. partial deriv of loss is >= ( loss gradient's l2-norm / √m ) </li>
+									<li> 4th - multi-step BCA : update 1 bit of max corr partial deriv of loss in each step </li>
+								</ol>
+							</li>
+							<li> Append uniform random seq of bytes (payload) to orig seq.
+							Then, embed this new binary and do iterative FGSM on this embedding until wrong pred by detector. Reconstruct adverse embedding to valid binary seq by mapping this embedding to closest neighbour in valid embedding space. </li>
+						</ol>	
+					</li>
+				</ol>
+				</li>
+				<li> JSMA (Jacobian Saliency Map Adversary) based
+					<ol>
+						<li> find most contributable seq towards adversary direction; compute Jacobian using computational graph unfolding; craft adv egs for 2 types of RNN o/p :
+							 <ol>
+							 	<li> Categorical - consider 𝐽𝑎𝑐𝑏𝐹[:, 𝑗]column corr to o/p comp j; for word i, identify perturbation direction using sign of Jacobian. </li>
+								<li> Sequential - after finding Jaobian, alter subset of i/p steps with high Jacobian vals and low Jacobian vals to achieve modification on subset of o/p </li>
+							 </ol>
+						</li>
+						<li>
+							Malware Detector - binary feature vector to rep application; preserves functionality of apps; craft adv egs on i/p feature vector (0->1 or 1->0) using JSMA
+							<ol>
+								<li> Compute gradient of fwd deriv to estimate perturb dir </li>
+								<li> Choose perturbation 𝝶 for a i/p sample that with maximal pos gradient into target class </li>
+								<li> Bound num of features to 20 </li>
+								<li> Bound num of features modified using L1-norm </li>
+								<li> For defense - feature reduction, distillation, adversarial training (most eff) </li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+				<li> C&W Based
+					<ol>
+						<li> Medical Records : detect susceptible events and measurements in each patient’s records & provide clinical help.
+							<ol>
+								<li> Predictive model - LSTM </li>
+								<li> Patient data matrix 𝑋𝑖 ∈ 𝑅𝑑*𝑡 , d=num of medical features; t=time index of medical check </li>
+								<li> Generate adv eg, logit(.) - logit layer o/p , ƛ - reg param of L1-norm
+								y’ - target label, y - orig label </li>
+								<li> Pick optimal eg. </li>
+								<li> Use it to compute susceptibility score for record </li>
+							</ol>
+						</li>
+						<li> Seq2Sick : attack seq2seq models using 2 targeted attacks:
+							<ol>
+								<li> non-overlapping attack : generate adv. seq. diff from orig o/p; Hinge-like loss func. that optimizes on logit layer </li>
+								<li> keyword attack : targeted keywords to appear in o/p seq; opt on logit layer & targeted keyword’s logit should be largest; solve mask func m to solve keyword collision problem; 2 reg methods -
+								(i) Group lasso reg - for group sparsity
+								(ii) Group gradient reg - make adversaries in
+								permissible range of embedding space </li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+				<li> Direction-based
+					<ol>
+						<li> HotFlip - generate adv eg through atomic flips using directional derivs.
+							<ol>
+						<li> Represent char level ops (swap, insert, delete) as vectors in i/p space </li>
+						<li> Estimate change in loss J(x,y) by directional derivs wrt these vectors </li>
+						<li> Using beam search, HotFlip finds best dir for multiple flips </li>
+						<li> Hotflip extended to targeted attacks using 1) controlled attack - remove specific word from o/p 2) targeted attack - replace specific word by chosen one </li>
+						<li> For this, max J(x,y_t) and min J(x,y_t’) , t=target word; t’=word to replace t </li>
+						<li> 3 types of attacks
+							<ol>
+						<li> One-hot :manipulate all words in text with best ops </li>
+						<li> Greedy : pick best op from text + perform fwd & bwd pass </li>
+						<li> Beam search : replace search method in greedy with beam search </li>
+					</ol>
+				</li>
+						<li> Threshold - only change 20% of chars </li>
+					</ol>
+					</li>
+					</ol>
+				</li>
+				<li>
+					Attention-based - compare robustness of CNN vs RNN thru 2 attacks; only uses attention score and not attention mechanism
+					<ol>
+						<li> First, use model’s internal attention distri to find pivotal sentence i.e. sentence given larger weight by model to make correct pred. </li>
+						<li> Exchange words with most attention with random word in vocab. </li>
+						<li> Second, remove sentence that gets highest attention </li>
+					</ol>
+				</li>
+				<li>
+					Reprogramming - uses AP to attack sequence neural classifiers; AP -
+					<ol>
+						<li> Adv reprogramming func 𝑔θ is trained so that DNN performs alternate task w/o modifying DNN param </li>
+						<li> Like transfer learning but no change in param </li>
+						<li> Apply Gumbel-Softmax to train 𝑔θ that works on discrete data </li>
+					</ol>
+				</li>
+				<li>
+					Hybrid - perturb i/p text on word embeddings using FGSM+DeepFool; round off adv egs to nearest meaningful word vectors using WMD
+				</li>
+				</ol>
+			</li>
+	<li> Black-box attacks : no detailed info of NN; more practical
+		
+	</li>
+</li>
+</ol>
+
+  <footer>
+    <div class="container">
+      <img src="https://visitor-badge.glitch.me/badge?page_id=https://shruti-codes.github.io" alt="Views"/>
+      <p>&copy; My Website 2021. Some Rights Reserved.</p>
+    </div>
+  </footer>
+
+</div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+</html>
