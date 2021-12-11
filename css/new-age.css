@@ -99,6 +99,7 @@ ul,ol {
 
 section {
   padding: 100px 0;
+  padding-bottom: 2px;
   background-color: transparent;
 }
 
@@ -268,6 +269,14 @@ section.contact ul.list-social li.social-wordpress a {
 
 section.contact ul.list-social li.social-wordpress a:hover {
   background-color:#3b5998 ;
+}
+
+section.contact ul.list-social li.social-orcid a {
+  background-color:#01796F ;
+}
+
+section.contact ul.list-social li.social-orcid a:hover {
+  background-color:#DCDCDC ;
 }
 
 section.contact ul.list-social li.social-instagram a {
